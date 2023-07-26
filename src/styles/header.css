@@ -1,0 +1,33 @@
+.headerLogo{
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerLogo a{
+    font-size: 3.5rem;
+}
+
+.headerLogo a, h1{
+    font-family: 'Chicle', cursive;
+    color: var(--couleur-secondaire);
+    text-shadow: 0 0 12px var(--couleur-principale);
+}
+
+.header-title{
+    height: 90vh;
+    width: 100vw;
+    position: relative;
+}
+
+h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-70%);
+    font-size: 5rem;
+}
+
+
