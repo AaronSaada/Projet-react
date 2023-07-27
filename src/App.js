@@ -5,11 +5,12 @@ import './styles/general.css'
 import videoHeader from './images/video-header.mp4'
 import imageActualite from './images/actualite.png'
 import imageQSN from './images/qsn.png'
+import BoutonValider from './components/BoutonValider.js'
 
 function App() {
   return(
     <>
-      <div className='page-container'>
+      <div className='home-page-container'>
         <div className='header-video'>
           <div className='background-video-container'>
             <video class="background-video" src={videoHeader} autoPlay loop muted playsInline></video>
@@ -26,18 +27,31 @@ function App() {
           </div>
         </div>
         <div className='section-informations'>
-          <div className='section-actualite'>
-            <h2>Actualité</h2>
-            <p>Le lieu où vous pouvez vous connecter avec vos amis, partager des moments spéciaux et explorer de nouvelles rencontres. Exprimez-vous à travers des photos, des vidéos et des messages, et découvrez le monde passionnant de la communauté Connectify. Rejoignez-nous dès maintenant et commencez à créer des liens, à inspirer et à être inspiré. Connectify est là pour vous aider à rester connecté et à célébrer les moments de la vie, ensemble.</p>
+          <div className='section-actualite-container'>
+            <div className='section-actualite'>
+              <h2>Actualité</h2>
+              <p>Le lieu où vous pouvez vous connecter avec vos amis, partager des moments spéciaux et explorer de nouvelles rencontres. Exprimez-vous à travers des photos, des vidéos et des messages, et découvrez le monde passionnant de la communauté Connectify. Rejoignez-nous dès maintenant et commencez à créer des liens, à inspirer et à être inspiré. Connectify est là pour vous aider à rester connecté et à célébrer les moments de la vie, ensemble.</p>
+            </div>
+            <img src={imageActualite} alt='Bonjour'/>
           </div>
-          <img src={imageActualite} alt='Bonjour'/>
-          <div className='section-qui-sommes-nous'>
-            <h2>Qui sommes nous ?</h2>
-            <p>Chez Connectify, nous sommes une plateforme sociale dynamique et inclusive, dédiée à connecter les individus du monde entier. Notre objectif est de créer un espace numérique où chacun peut se sentir libre d'exprimer sa véritable identité, de partager ses passions et de tisser des liens authentiques.</p>
+          <div className='section-qui-sommes-nous-container'>
+            <div className='section-qui-sommes-nous'>
+              <h2>Qui sommes nous ?</h2>
+              <p>Chez Connectify, nous sommes une plateforme sociale dynamique et inclusive, dédiée à connecter les individus du monde entier. Notre objectif est de créer un espace numérique où chacun peut se sentir libre d'exprimer sa véritable identité, de partager ses passions et de tisser des liens authentiques.</p>
+            </div>
+            <img src={imageQSN}/>
           </div>
-          <img src={imageQSN}/>
         </div>
         <Contact/>
+        <div className='newsletter-container'>
+          <div className='newsletter'>
+            <h3>Newsletter</h3>
+            <p>Inscrivez-vous à notre newsletter pour rester informé(e) et connecté(e) avec Connectify !</p>
+            <input type='text' name='email' id='email' placeholder="Entrez votre email..."/>
+            <BoutonValider/>
+          </div>
+        </div>
+        <Footer/>
       </div>
     </>
   )

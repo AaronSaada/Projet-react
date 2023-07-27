@@ -12,9 +12,46 @@
 }
 
 :root{
-    --couleur-principale: yellow;
+    --couleur-principale: rgb(236, 236, 55);
     --couleur-secondaire: purple;
+    --couleur-tertiaire: rgb(76, 33, 96);
     --couleur-titre: rgb(145, 48, 154);
+}
+
+h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-70%);
+    font-size: 5rem;
+}
+
+h2, h3{
+    font-family: 'gravitas one', cursive;
+}
+
+.headerLogo{
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerLogo a{
+    font-size: 3.5rem;
+}
+
+.headerLogo a, h1{
+    font-family: 'Chicle', cursive;
+    color: var(--couleur-secondaire);
+    text-shadow: 0 0 12px var(--couleur-principale);
+}
+
+.header-title{
+    height: 90vh;
+    width: 100vw;
+    position: relative;
 }
 
 .header-video{
@@ -31,6 +68,7 @@
 
 .section-bienvenue{
     height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +82,9 @@
     position: absolute;
     inset: 0;
     background: url(../images/fd_header.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     z-index: -1;
     width: 100vw;
 }
@@ -71,14 +112,7 @@
     width: 100vw
 }
 
-.section-qui-sommes-nous{
-    margin: 0;
-    padding: 0;
-}
-
 .section-informations div{
-    background-color: var(--couleur-secondaire);
-    padding: 80px 0;
     width: 100vw;
 }
 
@@ -103,6 +137,134 @@
     height: 100%;
 }
 
-h2, h3{
-    font-family: 'gravitas one', cursive;
+.section-actualite, .section-qui-sommes-nous{
+    background-color: var(--couleur-secondaire);
+    padding: 30px 0;
+}
+
+.section-actualite img{
+    box-shadow: 1px 1px black;
+}
+
+.section-qui-sommes-nous{
+    margin-top: -13px;
+    z-index: -1;
+}
+
+.section-qui-sommes-nous-container{
+    margin-bottom: -10px;
+}
+
+.form-container{
+    padding: 50px 0 100px 0;
+    background-color: rgb(129, 59, 161);
+}
+
+.form-container h3{
+    color: var(--couleur-principale);
+    text-align: center;
+    padding-bottom: 40px;
+    font-size: 1.8rem;
+}
+
+.form{
+    background-color: var(--couleur-tertiaire);
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px 10px;
+    border-radius: 25px;
+}
+
+.form label{
+    color: white;
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+}
+
+.form div{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.form textarea{
+    
+    padding: 10px;
+}
+
+.form input{
+    padding: 10px;
+}
+
+.form input, .form textarea{
+    font-family: 'inter', sans-serif;
+    border-radius: 10px;    
+    border: none;
+    box-shadow: inset 2px 4px rgba(88, 88, 88, 0.27);
+}
+
+.submit-button{
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 2px 2px 5px black;
+    color: rgb(36, 36, 36);
+    font-size: 1.3rem;
+}
+
+.form .submit-button{
+    background-color: var(--couleur-principale);
+}
+
+footer{
+    background-color: var(--couleur-tertiaire);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.newsletter-container{
+    height: 100vh;
+    width: 100vw;
+    background: url('../images/image-sono.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newsletter{
+    height: 60vh;
+    max-width: 90%;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.681);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+.newsletter h3{
+    color: var(--couleur-principale);
+    font-size: 1.7rem;
+}
+
+.newsletter p{
+    color: white;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+.newsletter input{
+    font-family: 'inter', sans-serif;
+    border: none;
+    background-color: rgb(255, 246, 236);
+    padding: 15px 10px;
+    width:80%;
+}
+
+.newsletter .submit-button{
+    background-color: var(--couleur-tertiaire);
+    color: white;
 }
