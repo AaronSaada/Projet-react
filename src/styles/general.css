@@ -232,6 +232,7 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -10px;
 }
 
 .newsletter{
@@ -267,4 +268,73 @@ footer{
 .newsletter .submit-button{
     background-color: var(--couleur-tertiaire);
     color: white;
+}
+
+.burger-menu{
+    cursor: pointer;
+}
+
+.barre{
+    display: block;
+    width: 50px;
+    height: 7px;
+    margin: 10px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--couleur-secondaire);
+}
+
+.burger-menu.active .barre:nth-child(2){
+    opacity: 0;
+}
+
+.burger-menu.active .barre:nth-child(1){
+    transform: translateY(14px) rotate(45deg) ;
+}
+
+.burger-menu.active .barre:nth-child(3){
+    transform: translateY(-19px) rotate(-45deg) ;
+}
+
+.burger-menu-nav{
+    position: fixed;
+    left: -105%;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    transition: 0.3s;
+    z-index: 100;
+    margin: 0;
+    padding: 0;
+    padding-top: 50px;
+    background-color: var(--couleur-principale);
+}
+
+.burger-menu-nav-flex{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.burger-menu-nav-flex ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    gap: 1.5em;
+}
+
+.burger-menu-open{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+}
+
+.burger-menu-nav.active{
+    left: 0;
+
 }
