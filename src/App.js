@@ -13,7 +13,7 @@ function App() {
       <div className='home-page-container'>
         <div className='header-video'>
           <div className='background-video-container'>
-            <video class="background-video" src={videoHeader} autoPlay loop muted playsInline></video>
+            <video className="background-video" src={videoHeader} autoPlay loop muted playsInline></video>
           </div>
           <Header/>
           <div className='header-title'>
@@ -32,14 +32,14 @@ function App() {
               <h2>Actualité</h2>
               <p>Le lieu où vous pouvez vous connecter avec vos amis, partager des moments spéciaux et explorer de nouvelles rencontres. Exprimez-vous à travers des photos, des vidéos et des messages, et découvrez le monde passionnant de la communauté Connectify. Rejoignez-nous dès maintenant et commencez à créer des liens, à inspirer et à être inspiré. Connectify est là pour vous aider à rester connecté et à célébrer les moments de la vie, ensemble.</p>
             </div>
-            <img src={imageActualite} alt='Bonjour'/>
+            <img src={imageActualite} alt='Actualités'/>
           </div>
           <div className='section-qui-sommes-nous-container'>
             <div className='section-qui-sommes-nous'>
               <h2>Qui sommes nous ?</h2>
               <p>Chez Connectify, nous sommes une plateforme sociale dynamique et inclusive, dédiée à connecter les individus du monde entier. Notre objectif est de créer un espace numérique où chacun peut se sentir libre d'exprimer sa véritable identité, de partager ses passions et de tisser des liens authentiques.</p>
             </div>
-            <img src={imageQSN}/>
+            <img src={imageQSN} alt='Qui sommes-nous?'/>
           </div>
         </div>
         <Contact/>
