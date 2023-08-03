@@ -8,11 +8,17 @@ export default function Bienvenu(){
     en: "Welcome",
     es: "Bienvenido",
     de: "Willkommen",
-    dz:'Mahbabekom',
+    gf: "ben vini",
+    ht: "Byenvini",
+    sen: "Akksil ak diam",
+    ukr: "дякую",
+    bgd: "স্বাগত",
+    zh: "欢迎光临",
+    dz:'مرحباً',
     he:"ברוך הבא",
     jp:"いらっしゃいませ",
     kb:"Anṣuf yis-wen",
-    Az:"ⴰⵏⵚⵓⴼ ⵢⵉⵙ ⵡⴻⵏ",
+    az:"ⴰⵏⵚⵓⴼ ⵢⵉⵙ ⵡⴻⵏ",
   
     // Ajoutez autant de langues que nécessaire
   };
