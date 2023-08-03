@@ -59,7 +59,7 @@ h2, h3{
 }
 
 .background-video{
-    position: absolute;
+    position: fixed;
     z-index: -1;
     height: 100%;
     width: 100%;
@@ -75,18 +75,6 @@ h2, h3{
     text-align: center;
     position: relative;
     background-color: rgba(234, 206, 47, 0.683);
-}
-
-.section-bienvenue::after{
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url(../images/fd_header.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    z-index: -1;
-    width: 100vw;
 }
 
 .section-bienvenue-container h2{
@@ -228,7 +216,6 @@ footer{
 .newsletter-container{
     height: 100vh;
     width: 100vw;
-    background: url('../images/image-sono.png');
     display: flex;
     justify-content: center;
     align-items: center;
@@ -270,71 +257,14 @@ footer{
     color: white;
 }
 
-.burger-menu{
-    cursor: pointer;
+.newsletter .submit-button-container{
+    width: 80%;
 }
 
-.barre{
-    display: block;
-    width: 50px;
-    height: 7px;
-    margin: 10px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: var(--couleur-secondaire);
+.submit-button-container{
+    margin: 0 auto;
 }
 
-.burger-menu.active .barre:nth-child(2){
-    opacity: 0;
-}
-
-.burger-menu.active .barre:nth-child(1){
-    transform: translateY(14px) rotate(45deg) ;
-}
-
-.burger-menu.active .barre:nth-child(3){
-    transform: translateY(-19px) rotate(-45deg) ;
-}
-
-.burger-menu-nav{
-    position: fixed;
-    left: -105%;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
-    transition: 0.3s;
-    z-index: 100;
-    margin: 0;
-    padding: 0;
-    padding-top: 50px;
-    background-color: var(--couleur-principale);
-}
-
-.burger-menu-nav-flex{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
-}
-
-.burger-menu-nav-flex ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3rem;
-    gap: 1.5em;
-}
-
-.burger-menu-open{
-    position: absolute;
-    top: 3%;
-    right: 3%;
-}
-
-.burger-menu-nav.active{
-    left: 0;
-
+.submit-button{
+    width: 100%;
 }
