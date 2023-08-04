@@ -1,17 +1,41 @@
 
-export default function Header(prop){
+
+const Header = () => {
+    const handleClick = () => {
+        this.classList.toggle("active");
+        this.style.zIndex = "101";
+        this.classList.toggle("burger-menu-fixed");
+    }
+
+    const changeStyle = () => {
+        this.classList.toggle("active");
+    }
+    
+
+
     return(
         <header>
             <div className='headerLogo'>
                 <a>Connectify</a>
-                <nav className="navbar">
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <a href="#" className="icon-button"></a>
-                        </li>
+            </div>
+            <div id="burger-menu" onClick={handleClick}>
+                <div className="barre"></div>
+                <div className="barre"></div>
+                <div className="barre"></div>
+            </div>
+            <div id="burger-menu-nav" onClick={changeStyle}>
+                <div id="burger-menu-nav-flex">
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="inspiration.html">Inspiration</a></li>
+                        <li><a href="produits.html">Produits</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="contact.html">Nous Contacter</a></li>
                     </ul>
-                </nav>
+                </div>
             </div>
         </header>
     )
 }
+
+export default Header;

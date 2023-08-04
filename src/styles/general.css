@@ -21,7 +21,7 @@
 
 h1{
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translateX(-50%) translateY(-70%);
     font-size: 5rem;
@@ -31,23 +31,83 @@ h2, h3{
     font-family: 'gravitas one', cursive;
 }
 
-.navbar{
+#burger-menu {
     position: absolute;
-    top: 3%;
-    right: 8%;
+    top: 2%;
+    right: 5%;
+    cursor: pointer;
 }
 
-.navbar-nav{
-    max-width: 100%;
+.barre{
+    display: block;
+    width: 40px;
+    height: 5px;
+    margin: 10px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+    box-shadow: 1px 1px 3px black;
+}
+
+#burger-menu.active .barre:nth-child(2){
+    opacity: 0;
+}
+
+#burger-menu.active .barre:nth-child(1){
+    transform: translateY(8px) rotate(45deg) ;
+}
+
+#burger-menu.active .barre:nth-child(3){
+    transform: translateY(-21px) rotate(-45deg) ;
+}
+
+#burger-menu-nav{
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    transition: 0.3s;
+    z-index: 100;
+    margin: 0;
+    padding: 0;
+    padding-top: 50px;
+    background-color: var(--couleur-secondaire);
+    color: white;
+
+}
+
+#burger-menu-nav-flex{
     height: 100%;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+    
 }
 
-.nav-item{
+#burger-menu-nav-flex ul{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    gap: 1.5em;
+}
+
+#burger-menu-open{
+    position: absolute;
+    top: 3%;
+    right: 3%;
+}
+
+#burger-menu-nav.active{
+    left: 0;
+
+}
+
+.burger-menu-fixed{
+    position: fixed;
 }
 
 .headerLogo{
