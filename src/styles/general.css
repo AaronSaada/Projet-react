@@ -21,7 +21,7 @@
 
 h1{
     position: absolute;
-    top: 35%;
+    top: 45%;
     left: 50%;
     transform: translateX(-50%) translateY(-70%);
     font-size: 5rem;
@@ -31,83 +31,98 @@ h2, h3{
     font-family: 'gravitas one', cursive;
 }
 
+
+/*  ----------------------  MENU BURGER  -----------------------  */
+
+.burger-bar{
+    width: 2.5em;
+    height: 4px;
+    background: white;
+    margin: 10px;
+    z-index: 101;
+}
+
+.menu-title-container{
+    height: 20%;
+}
+
+.menu-title-container p {
+    font-family: 'chicle', cursive;
+    font-size: 4rem;
+    font-weight: 400;
+}
+
+.menu{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--couleur-secondaire);
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-container{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color:  var(--couleur-principale);
+    text-shadow: 2px 3px 3px black;
+}
+
+
+.menu ul{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
 #burger-menu {
     position: absolute;
     top: 2%;
     right: 5%;
     cursor: pointer;
+    z-index: 101;
 }
 
-.barre{
-    display: block;
-    width: 40px;
-    height: 5px;
-    margin: 10px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: white;
-    box-shadow: 1px 1px 3px black;
-}
+/*  ----------------    MENU OUVRANT    ------------------ */
 
-#burger-menu.active .barre:nth-child(2){
-    opacity: 0;
-}
-
-#burger-menu.active .barre:nth-child(1){
-    transform: translateY(8px) rotate(45deg) ;
-}
-
-#burger-menu.active .barre:nth-child(3){
-    transform: translateY(-21px) rotate(-45deg) ;
-}
-
-#burger-menu-nav{
-    position: fixed;
+.hidden{
     left: -100%;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
-    transition: 0.3s;
-    z-index: 100;
-    margin: 0;
-    padding: 0;
-    padding-top: 50px;
-    background-color: var(--couleur-secondaire);
-    color: white;
-
+    transition: ease-out 0.3s; 
 }
 
-#burger-menu-nav-flex{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    
-}
-
-#burger-menu-nav-flex ul{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.3rem;
-    gap: 1.5em;
-}
-
-#burger-menu-open{
-    position: absolute;
-    top: 3%;
-    right: 3%;
-}
-
-#burger-menu-nav.active{
+.visible{
     left: 0;
+    transition: ease-out 0.3s; 
+} 
 
+.burger-bar.clicked:first-child{
+    transform: translateY(13px) translateX(0px) rotate(45deg) ;
+    transition: ease-in-out 0.2s;
 }
 
-.burger-menu-fixed{
-    position: fixed;
+.burger-bar.clicked:nth-child(2){
+    display: none;
+    transition: ease-in-out 0.2s;
+}
+
+.burger-bar.clicked:last-child{
+    transform: translateY(0px) translateX(0px) rotate(-45deg);
+    transition: ease-in-out 0.2s;
+}
+
+.burger-bar.unclicked {
+    transform: rotate(0);
+    transition: ease-in-out 0.2s;
 }
 
 .headerLogo{
@@ -353,3 +368,6 @@ footer{
 .submit-button{
     width: 100%;
 }
+
+
+/*  --------------  RESPONSIVE  -------------   */

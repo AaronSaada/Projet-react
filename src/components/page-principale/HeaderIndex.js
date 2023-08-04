@@ -11,6 +11,7 @@ export default function MainHeader(){
     <div className='header-title'>
       <h1>Connectify</h1>
     </div>
+    
   </div>
   )
 }

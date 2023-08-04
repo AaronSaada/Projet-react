@@ -1,36 +1,42 @@
-
+import React, {useState} from "react"
 
 const Header = () => {
-    const handleClick = () => {
-        this.classList.toggle("active");
-        this.style.zIndex = "101";
-        this.classList.toggle("burger-menu-fixed");
-    }
-
-    const changeStyle = () => {
-        this.classList.toggle("active");
-    }
     
+    const [burger_class, setBurgerClass] = useState("burger-bar unclicked")
+    const [menu_class, setMenuClass] = useState("menu hidden")
+    const [isMenuClicked, setIsMenuClicked] = useState(false)
 
+    const updateMenu = () => {
+        if(!isMenuClicked){
+            setBurgerClass("burger-bar clicked")
+            setMenuClass("menu visible")
+        }else{
+            setBurgerClass("burger-bar unclicked")
+            setMenuClass("menu hidden")
+        }
+
+        setIsMenuClicked(!isMenuClicked)
+    }
 
     return(
         <header>
             <div className='headerLogo'>
                 <a>Connectify</a>
             </div>
-            <div id="burger-menu" onClick={handleClick}>
-                <div className="barre"></div>
-                <div className="barre"></div>
-                <div className="barre"></div>
+            <div id="burger-menu" onClick={updateMenu}>
+                <div className={burger_class}></div>
+                <div className={burger_class}></div>
+                <div className={burger_class}></div>
             </div>
-            <div id="burger-menu-nav" onClick={changeStyle}>
-                <div id="burger-menu-nav-flex">
+            <div className={menu_class}>
+                <div className="menu-container">
+                    <div className="menu-title-container">
+                        <p>Connectify</p>
+                    </div>
                     <ul>
                         <li><a href="#">Accueil</a></li>
-                        <li><a href="inspiration.html">Inspiration</a></li>
-                        <li><a href="produits.html">Produits</a></li>
-                        <li><a href="services.html">Nos Services</a></li>
-                        <li><a href="contact.html">Nous Contacter</a></li>
+                        <li><a href="#">Connexion</a></li>
+                        <li><a href="#">Inscription</a></li>
                     </ul>
                 </div>
             </div>
