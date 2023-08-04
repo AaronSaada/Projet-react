@@ -31,6 +31,25 @@ h2, h3{
     font-family: 'gravitas one', cursive;
 }
 
+.navbar{
+    position: absolute;
+    top: 3%;
+    right: 8%;
+}
+
+.navbar-nav{
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .headerLogo{
     height: 10vh;
     width: 100%;
@@ -87,7 +106,7 @@ h2, h3{
     top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 2.5rem;
+    font-size: 2.7rem;
     color: var(--couleur-titre);
 }
 

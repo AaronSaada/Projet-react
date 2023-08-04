@@ -1,6 +1,6 @@
 import BoutonValider from "./BoutonValider"
 
-export default function Contact(){
+export default function Form(){
     return(
         <div className='form-container'>
             <h3>Nous Contacter</h3>

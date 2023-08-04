@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import imageActualite from '../images/actualite.png'
-import imageQSN from '../images/qsn.png'
+import imageActualite from '../../images/actualite.png'
+import imageQSN from '../../images/qsn.png'
 
 export default function Bienvenu(){
   const traductions = {
