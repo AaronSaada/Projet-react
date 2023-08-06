@@ -1,21 +1,19 @@
-import HeaderIndex from './components/page-principale/HeaderIndex.js'
-import MainIndex from './components/page-principale/MainIndex.js'
-import Footer from './components/general/Footer.js'
+import PageDAccueil from './components/pages/PageDAccueil'
+import PageConnexion from './components/pages/PageConnexion'
+import PageInscription from './components/pages/PageInscription'
 import './styles/general.css'
 import {Routes, Route} from 'react-router-dom'
 
 
-function App() {
+export default function App() {
   return(
     <>
       <Routes>
-        <Route path="/" element={<HeaderIndex/>
-          <MainIndex/>
-          <Footer/>}/>
+        <Route path="/" element={<PageDAccueil/>}/>
+        <Route path="/Connexion" element={<PageConnexion/>}/> 
+        <Route path="/Inscription" element={<PageInscription/>}/>
       </Routes>
       
     </>
   )
 }
-
-export default App;
