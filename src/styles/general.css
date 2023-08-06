@@ -103,10 +103,12 @@ h2, h3{
 .visible{
     left: 0;
     transition: ease-out 0.3s; 
+    position: fixed;
+    width: 100vw;
 } 
 
 .burger-bar.clicked:first-child{
-    transform: translateY(13px) translateX(0px) rotate(45deg) ;
+    transform: rotate(45deg) ;
     transition: ease-in-out 0.2s;
 }
 
@@ -116,13 +118,19 @@ h2, h3{
 }
 
 .burger-bar.clicked:last-child{
-    transform: translateY(0px) translateX(0px) rotate(-45deg);
+    transform:rotate(-45deg);
     transition: ease-in-out 0.2s;
 }
 
 .burger-bar.unclicked {
     transform: rotate(0);
     transition: ease-in-out 0.2s;
+}
+
+.burger-bar.clicked{
+    position: fixed;
+    top: 4%;
+    right: 5%;
 }
 
 .headerLogo{
@@ -135,6 +143,7 @@ h2, h3{
 
 .headerLogo a{
     font-size: 3.5rem;
+    margin-top: 5%;
 }
 
 .headerLogo a, h1{
