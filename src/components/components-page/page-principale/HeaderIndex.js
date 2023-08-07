@@ -1,5 +1,5 @@
-import Header from '../general/Header'
-import videoHeader from '../../images/video-header.mp4'
+import Header from '../../general/Header'
+import videoHeader from '../../../images/video-header.mp4'
 
 export default function MainHeader(){
   return(

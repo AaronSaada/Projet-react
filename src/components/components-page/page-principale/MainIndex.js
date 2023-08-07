@@ -1,6 +1,6 @@
 import Bienvenu from './Bienvenu.js'
-import Form from '../general/Form.js'
-import BoutonValider from '../general/BoutonValider.js'
+import Form from '../../general/Form.js'
+import BoutonValider from '../../general/BoutonValider.js'
 
 
 export default function MainIndex(){

@@ -21,8 +21,13 @@ const Header = () => {
 
     return(
         <header>
-            <div className='headerLogo'>
-                <a>Connectify</a>
+            <div className='header-logo'>
+                <Link to='/' id='header-title-logo'>Connectify</Link>
+                <ul className="desktop-nav">
+                    <li><Link to='/'>Accueil</Link></li>
+                    <li><Link to='/Connexion'>Connexion</Link></li>
+                    <li><Link to='/Inscription'>Inscription</Link></li>
+                </ul>
             </div>
             <div id="burger-menu" onClick={updateMenu}>
                 <div className={burger_class}></div>
@@ -34,12 +39,13 @@ const Header = () => {
                     <div className="menu-title-container">
                         <p>Connectify</p>
                     </div>
-                    <ul>
+                    <ul className="burger-nav">
                         <li><Link to='/'>Accueil</Link></li>
                         <li><Link to="/Connexion">Connexion</Link></li>
                         <li><Link to="/Inscription">Inscription</Link></li>
                     </ul>
                 </div>
+                
             </div>
         </header>
     )

@@ -76,8 +76,11 @@ h2, h3{
     text-shadow: 2px 3px 3px black;
 }
 
+.desktop-nav{
+    display: none;
+}
 
-.menu ul{
+.menu .burger-nav{
     height: 50%;
     display: flex;
     flex-direction: column;
@@ -133,23 +136,23 @@ h2, h3{
     right: 5%;
 }
 
-.headerLogo{
+#header-title-logo{
+    font-size: 3.5rem;
+}
+
+.header-logo{
     height: 10vh;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 3%;
 }
 
-.headerLogo a{
-    font-size: 3.5rem;
-    margin-top: 5%;
-}
-
-.headerLogo a, h1{
+#header-title-logo, h1{
     font-family: 'Chicle', cursive;
-    color: var(--couleur-secondaire);
-    text-shadow: 0 0 12px var(--couleur-principale);
+    color: var(--couleur-principale);
+    text-shadow: 0 0 12px var(--couleur-secondaire);
 }
 
 .header-title{
@@ -314,7 +317,7 @@ h2, h3{
 
 footer{
     background-color: var(--couleur-tertiaire);
-    height: 10vh;
+    height: 15vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -384,33 +387,192 @@ footer{
 /*  --------------  PAGE CONNEXION  ---------------*/
 
 .connection-header-container{
-    height: 35vh;
+    height: 45vh;
     background: url(../images/fd_gauche.png);
 }
 
-.connection-section-container{
+.connection-section-container, .sign-up-section-container{
     background-color: var(--couleur-secondaire);
     padding: 0 10%;
-    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-.connection-section-container h2{
+.connection-section-container h2, .sign-up-section-container h2{
     color: var(--couleur-principale);
     font-size: 2rem;
     text-align: center;
+    margin: 1rem 0;
 }
 
-#connection-form{
+#connection-form, #sign-up-form{
     max-height: 80%;
     max-width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    
+}
+
+#connection-form input[type='submit'], #sign-up-form input[type='submit']{
+    margin: 40px auto ;
+    width: 85%;
+    background-color: var(--couleur-principale);
+}
+
+#connection-form-container, #sign-up-form-container{
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+#no-account{
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+#sign-up-link{
+    text-decoration: underline;
+}
+
+/*  --------------  PAGE INSCRIPTION    ---------------  */
+
+.sign-up-header-container{
+    height: 45vh;
+    background: url(../images/image-inscription.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+input[type='radio']{
+    width: 10px;
+    transform: scale(2.5);
+    display: inline;
+}
+
+#input-radio-flex{
+    display: flex;
+    margin: 0;
+}
+
+#gender-container{
+    display: flex;
+    flex-direction: row;
+}
+
+#sign-in-link{
+    text-decoration: underline;
 }
 
 
+/*  ----------- CONTACT ----------- */
+
+.contact-header-container{
+    height: 45vh;
+    background: url('../images/image-contact.png');
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.contact-background{
+    display: none;
+}
+
 /*  --------------  RESPONSIVE  -------------   */
+
+
+@media (min-width: 1100px){
+
+    .header-logo{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    #burger-menu{
+        display: none;
+    }
+
+    .desktop-nav{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .desktop-nav li{
+        font-family: 'Inter', cursive;
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    .desktop-nav li:last-child{
+        background-color: rgba(128, 0, 128, 0.587);
+        border-radius: 20px;
+        padding: 10px 15px;
+    }
+
+    .section-actualite-container{
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+    }
+
+    .section-actualite{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .section-actualite p {
+        max-width: 60%;
+    }
+
+    .section-qui-sommes-nous-container{
+        display: flex;
+        height: 100vh;
+    }
+
+    .section-qui-sommes-nous{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    img[src='{imageQSN}']{
+        overflow: hidden;
+    }
+
+    .section-qui-sommes-nous p {
+        max-width: 60%;
+    }
+
+    .contact-background{
+        display: block;
+    }
+
+    .contact-background img{
+        width: 50vw;
+        height: 100%;
+    }
+
+    #contact-container{
+        display: flex;
+        width: 100vw;
+        height: 100%;
+    }
+
+    .form-container{
+        width: 50vw;
+    }
+
+    .newsletter button{
+        width: 50%;
+        display: block;
+        margin: 0 auto;
+    }
+
+}
