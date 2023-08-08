@@ -6,13 +6,15 @@ export default function MainConnexion(){
         <h2>Inscription</h2>
         <form method='POST' className='form' id='sign-up-form'>
             <div id='sign-up-form-container'>
-                <div>
-                    <label>Nom :</label>
-                    <input type='text' id='name' placeholder='Entrez votre nom...' required/>
-                </div>
-                <div>
-                    <label>Prénom :</label>
-                    <input type='text' id='firstname' placeholder='Entrez votre prénom...' required/>
+                <div id='sign-up-name-flex'>
+                    <div>
+                        <label>Nom :</label>
+                        <input type='text' id='name' placeholder='Entrez votre nom...' required/>
+                    </div>
+                    <div>
+                        <label>Prénom :</label>
+                        <input type='text' id='firstname' placeholder='Entrez votre prénom...' required/>
+                    </div>
                 </div>
                 <div>
                     <label>Email :</label>
@@ -21,13 +23,21 @@ export default function MainConnexion(){
                 <div id='gender-container'>
                     <label>Genre :</label>
                     <div id='input-radio-flex'>
-                        <div className="input-radio-gender">
-                            <input type='radio' id='man'/>
-                            <label>Homme</label>
+                        <div id='input-gender-flex-man'>
+                            <div className="input-radio-gender">
+                                <input type='radio' name='genre' id='homme'/>
+                            </div>
+                            <div>
+                                <label name='man' id='homme'>Homme</label>
+                            </div>
                         </div>
-                        <div className="input-radio-gender">
-                            <input type='radio' id='woman' />
-                            <label>Femme</label>
+                        <div id='input-gender-flex-woman'>
+                            <div className="input-radio-gender">
+                                <input type='radio' name='genre' id='femme'/>
+                            </div>
+                            <div>
+                                <label name='woman' id='femme'>Femme</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,7 +52,7 @@ export default function MainConnexion(){
                 <input type='submit' id='inscription' value='Valider'/>
             </div>
         </form>
-        <p id='no-account'>Pas de compte ? <Link to='/Connexion' id='sign-in-link'>Inscrivez-vous</Link></p>
+        <p id='no-account'>Déjà membre ? <Link to='/Connexion' id='sign-in-link'>Connectez-vous</Link></p>
     </div>
   )
   

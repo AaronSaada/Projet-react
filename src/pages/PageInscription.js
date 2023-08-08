@@ -4,8 +4,10 @@ import Footer from '../components/general/Footer'
 export default function PageInscription(){
   return(
     <div>
-      <HeaderInscription/>
-      <MainInscription/>
+      <div id='sign-up-flex-desktop'>
+        <HeaderInscription/>
+        <MainInscription/>
+      </div>
       <Footer/>
     </div>
   ) 

@@ -5,8 +5,11 @@ import Footer from '../components/general/Footer'
 export default function PageConnexion(){
   return(
     <div>
-      <HeaderConnexion/>
-      <MainConnexion/>
+      <div id='connection-flex-desktop'>
+        <HeaderConnexion/>
+        <MainConnexion/>
+      </div>
+      
       <Footer/>
     </div>
   ) 
