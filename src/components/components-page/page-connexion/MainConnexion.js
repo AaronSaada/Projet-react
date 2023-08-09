@@ -14,8 +14,8 @@ export default function MainConnexion(){
                         <label>Mot de passe :</label>
                         <input type='password' id='password' placeholder='Entrez votre mot de passe...'/>
                     </div>
-                    
                     <Link to='../Profil'><input type='submit' id='connection' value='Se Connecter'/></Link>
+                    
                 </div>
             </form>
             <p id='no-account'>Pas de compte ? <Link to='/Inscription' id='sign-up-link'>Inscrivez-vous</Link></p>
