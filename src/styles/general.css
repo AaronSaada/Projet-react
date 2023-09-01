@@ -518,6 +518,7 @@ input[type='radio']{
 #header-profile-background{
     background-color: var(--couleur-secondaire);
     height: 15vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -871,4 +872,12 @@ iframe{
         text-decoration: underline dotted;
     }
 
+    #header-profile-background{
+        background-color: var(--couleur-secondaire);
+        height: 15vh;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    
 }
