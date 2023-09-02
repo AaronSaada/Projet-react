@@ -49,6 +49,7 @@ export default function MainConnexion(){
         }catch(err){
 
             if(err.code === "auth/invalid-email"){
+                
                 setValidation("Le format de l'Email est incorrecte")
 
             }

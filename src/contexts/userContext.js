@@ -5,7 +5,7 @@ import{
   createUserWithEmailAndPassword,
   onAuthStateChanged
 } from 'firebase/auth'
-import {auth} from "../firebase-config";
+import {auth} from "../services/firebase-config";
 
 export const UserContext = createContext();
 
