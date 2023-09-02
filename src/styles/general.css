@@ -490,6 +490,12 @@ input[type='radio']{
     margin: 0;
 }
 
+.six-characters{
+    font-size: 1rem;
+    color: red;
+    padding-top: 0.5rem;
+}
+
 /*  ----------- CONTACT ----------- */
 
 .contact-header-container{
