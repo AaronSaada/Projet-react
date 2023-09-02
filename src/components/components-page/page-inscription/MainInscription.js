@@ -9,7 +9,7 @@ export default function MainConnexion(){
 
     const navigate = useNavigate();
 
-    const [validation, setValidation] = useState("")
+    const [validation, setValidation] = useState("");
 
     const inputs = useRef([
 
@@ -37,7 +37,7 @@ export default function MainConnexion(){
 
         try{
 
-            const cred = await signUp(
+            await signUp(
                 inputs.current[2].value,
                 inputs.current[5].value
             )
@@ -69,11 +69,11 @@ export default function MainConnexion(){
             <div id='sign-up-form-container'>
                 <div id='sign-up-name-flex'>
                     <div>
-                        <label>Nom :</label>
+                        <label htmlFor="signUpEmail">Nom :</label>
                         <input ref={addInputs} type='text' id='name' placeholder='Entrez votre nom...' required/>
                     </div>
                     <div>
-                        <label>Prénom :</label>
+                        <label htmlFor="signUpPwd">Prénom :</label>
                         <input ref={addInputs} type='text' id='firstname' placeholder='Entrez votre prénom...' required/>
                     </div>
                 </div>

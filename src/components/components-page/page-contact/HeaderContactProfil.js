@@ -1,12 +1,10 @@
 import HeaderConnecte from '../../general/HeaderConnecte'
 
-export default function HeaderProfil(){
-
+export default function HeaderContactProfil(){
 
     return(
-        <div id='header-profile-background'>
+        <div className='contact-header-container'>
           <HeaderConnecte/>
         </div>
-        
     )
 }
