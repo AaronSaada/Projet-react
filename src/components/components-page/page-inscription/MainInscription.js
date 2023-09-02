@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useRef, useState, useContext } from "react";
 import { UserContext } from '../../../contexts/userContext'
+import { useNavigate } from "react-router-dom"
 
 export default function MainConnexion(){
 
     const {signUp} = useContext(UserContext);
+
+    const navigate = useNavigate();
 
     const [validation, setValidation] = useState("")
 
@@ -33,20 +36,27 @@ export default function MainConnexion(){
         }
 
         try{
+
             const cred = await signUp(
                 inputs.current[2].value,
                 inputs.current[5].value
             )
+
             formRef.current.reset();
             setValidation("");
-            console.log(cred)
+            navigate("/Profil");
+
         }catch(err){
+
             if(err.code === "auth/invalid-email"){
                 setValidation("Le format de l'Email est incorrecte")
+
             }
 
             if(err.code === "auth/email-already-in-use"){
+
                 setValidation("Cette adresse Email est déjà utilisée")
+
             }
         }
         
