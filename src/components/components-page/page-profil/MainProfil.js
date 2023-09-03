@@ -5,6 +5,7 @@ import PhotoGallerieTrois from '../../../images/pexels-anna-shvets-4315839 3.png
 import PhotoGallerieQuatre from '../../../images/pexels-anna-shvets-4315839 4.png'
 
 export default function MainProfil(){
+
     return(
         <div id='main-profile'>
             <div id='profile-informations-container'>
