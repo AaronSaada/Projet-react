@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
 import { useNavigate } from "react-router-dom"
-import { auth } from '../../services/firebase-config'
+import { auth } from '../../api/firebase-config'
 
 const HeaderConnecte = () => {
 

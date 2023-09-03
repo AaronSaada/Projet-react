@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useRef, useState, useContext } from "react";
+import { useRef, useState, useContext, useEffect } from "react";
 import { UserContext } from '../../../contexts/userContext'
 import { useNavigate } from "react-router-dom"
+import { db } from '../../../api/firebase-config'
+import { collection, getDocs, addDoc } from 'firebase/firestore'
 
-export default function MainConnexion(){
+export default function MainInscription(){
 
     const {signUp} = useContext(UserContext);
 
@@ -63,6 +65,29 @@ export default function MainConnexion(){
         
     }
 
+    const [newFirstName, setNewFirstName] = useState("");
+    const [newLastName, setNewLastName] = useState("");
+    const [newEmail, setNewEmail] = useState("");
+    const [newGender, setNewGender] = useState("");
+    const [users, setUsers] = useState([]);
+    const usersCollectionRef = collection(db, "users")
+
+    const createUser = async () => {
+        await addDoc(usersCollectionRef, { lastName: newLastName, firstName: newFirstName, email: newEmail, gender: newGender});
+    }
+
+    useEffect(() => {
+
+        const getUsers = async () => {
+            const data = await getDocs(usersCollectionRef);
+            setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id })))
+        };
+
+        getUsers()
+
+    }, [])
+    
+    
   return(
     <div className='sign-up-section-container'>
         <h2>Inscription</h2>
@@ -71,23 +96,59 @@ export default function MainConnexion(){
                 <div id='sign-up-name-flex'>
                     <div>
                         <label htmlFor="signUpEmail">Nom :</label>
-                        <input ref={addInputs} type='text' id='name' placeholder='Entrez votre nom...' required/>
+                        <input 
+                            ref={addInputs} 
+                            onChange={(event) => {
+                                setNewLastName(event.target.value);
+                            }} 
+                            type='text' 
+                            id='name' 
+                            placeholder='Entrez votre nom...' 
+                            required
+                        />
                     </div>
                     <div>
                         <label htmlFor="signUpPwd">Prénom :</label>
-                        <input ref={addInputs} type='text' id='firstname' placeholder='Entrez votre prénom...' required/>
+                        <input 
+                            ref={addInputs}
+                            onChange={(event) => {
+                                setNewFirstName(event.target.value);
+                            }}  
+                            type='text' 
+                            id='firstname' 
+                            placeholder='Entrez votre prénom...' 
+                            required
+                        />
                     </div>
                 </div>
                 <div>
                     <label>Email :</label>
-                    <input ref={addInputs} type='email' id='email' placeholder='Entrez votre email..' required/>
+                    <input 
+                        ref={addInputs}
+                        onChange={(event) => {
+                            setNewEmail(event.target.value);
+                        }}  
+                        type='email' 
+                        id='email' 
+                        placeholder='Entrez votre email..' 
+                        required
+                    />
                 </div>
                 <div id='gender-container'>
                     <label>Genre :</label>
                     <div id='input-radio-flex'>
                         <div id='input-gender-flex-man'>
                             <div className="input-radio-gender">
-                                <input ref={addInputs} type='radio' name='genre' id='homme'/>
+                                <input 
+                                    ref={addInputs} 
+                                    onChange={(event) => {
+                                        setNewGender(event.target.value);
+                                    }} 
+                                    type='radio' 
+                                    name='genre' 
+                                    id='homme'
+                                    value='homme'
+                                />
                             </div>
                             <div>
                                 <label name='man' id='homme'>Homme</label>
@@ -95,7 +156,16 @@ export default function MainConnexion(){
                         </div>
                         <div id='input-gender-flex-woman'>
                             <div className="input-radio-gender">
-                                <input ref={addInputs} type='radio' name='genre' id='femme'/>
+                                <input 
+                                    ref={addInputs}
+                                    onChange={(event) => {
+                                        setNewGender(event.target.value);
+                                    }}  
+                                    type='radio' 
+                                    name='genre' 
+                                    id='femme'
+                                    value='femme'
+                                />
                             </div>
                             <div>
                                 <label name='woman' id='femme'>Femme</label>
@@ -105,14 +175,32 @@ export default function MainConnexion(){
                 </div>
                 <div>
                     <label>Mot de passe :</label>
-                    <input ref={addInputs} type='password' id='password' placeholder='Entrez votre mot de passe...' required/>
+                    <input 
+                        ref={addInputs}
+                        type='password' 
+                        id='password' 
+                        placeholder='Entrez votre mot de passe...' 
+                        required
+                    />
                 </div>
                 <div>
                     <label>Vérification de mot de passe :</label>
-                    <input ref={addInputs} type='password' id='password-verification' placeholder='Confirmez votre mot de passe..' required/>
+                    <input 
+                        ref={addInputs} 
+                        type='password' 
+                        id='password-verification' 
+                        placeholder='Confirmez votre mot de passe..' 
+                        required
+                    />
                 </div>
                 <p className='six-characters'>{validation}</p>
-                <input ref={addInputs} type='submit' id='inscription' value='Valider'/>
+                <input 
+                    ref={addInputs} 
+                    onClick={createUser} 
+                    type='submit' 
+                    id='inscription' 
+                    value='Valider'
+                />
             </div>
         </form>
         <p id='no-account'>Déjà membre ? <Link to='/Connexion' id='sign-in-link'>Connectez-vous</Link></p>

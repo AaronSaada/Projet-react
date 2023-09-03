@@ -4,10 +4,13 @@ import Footer from '../components/general/Footer'
 
 export default function PageContact(){
     return(
-        <div>
+        <div id='contact-page-container'>
             <HeaderContactProfil/>
-            <Form/>
-            <Footer/>
+            <div id='form-footer-link'>
+                <Form/>
+                <Footer/>
+            </div>
+            
         </div>
         
     )
