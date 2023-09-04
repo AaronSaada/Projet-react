@@ -13,17 +13,6 @@ const firebaseConfig = {
   appId: "1:579830180390:web:69a844675b0a95857b54e7"
 };
 
-// export function UseAuth(){
-//   const [currentUser, setCurrentUser] = useState();
-
-//   useEffect(() => {
-//     const unsub = onAuthStateChanged(auth, user => setCurrentUser(user));
-//     return unsub;
-//   }, [])
-//   return currentUser;
-// }
-
-
 const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
 export const auth = getAuth(app);
