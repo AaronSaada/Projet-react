@@ -46,7 +46,7 @@ const HeaderConnecte = () => {
                 <ul className="desktop-nav">
                     <li><Link to='/Profil'>Profil</Link></li>
                     <li><Link to='/ContactProfil'>Contact</Link></li>
-                    <li><Link to='/Connexion'>Déconnexion</Link></li>
+                    <li><Link onClick={logOut}>Déconnexion</Link></li>
                 </ul>
             </div>
             <div id="burger-menu" onClick={updateMenu}>

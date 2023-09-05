@@ -1,4 +1,4 @@
-import PhotoDeProfil from '../../../images/photo-de-profil.png'
+import PhotoDeProfil from '../../../images/blank-profile-picture-973460_960_720.webp'
 import ProfileTitle from '../../ProfileTitle.js'
 import { useState, useEffect } from 'react'
 import { storage, db, auth } from '../../../api/firebase-config'
@@ -41,7 +41,6 @@ export default function MainProfil(){
             }
         });
     };
-
 
     const [postLists, setPostsList] = useState([]);
     
@@ -133,9 +132,14 @@ export default function MainProfil(){
                 })
             })
         })
-    }, [])
+    }, []);
 
-    // Partie Wall
+    // Tabs
+    const [activeTab, setActiveTab] = useState("all");
+
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+    };
 
     return(
         <div id='main-profile'>
@@ -145,116 +149,148 @@ export default function MainProfil(){
                         <img src={PhotoDeProfil} alt='Photo de profil'/>
                     </div>
                     
-                    <p id='profile-lastname'>Nom</p>
-                    <p id='profile-firstname'>Prénom</p>
+                    <p id='profile-lastname'>SAADA</p>
+                    <p id='profile-firstname'>Aaron</p>
                 </div>
             </div>
             <div id='profile-main-flex'>
                 <ul id='profile-section-nav'>
-                    <li>All</li>
-                    <li>Wall</li>
-                    <li>Gallery</li>
-                    <li>Video</li>
-                    <li>Music</li>
+                    <li
+                        className={activeTab === "all" ? "active" : ""}
+                        onClick={() => handleTabChange("all")}
+                    >All</li>
+                    <li
+                        className={activeTab === "profile-wall" ? "active" : ""}
+                        onClick={() => handleTabChange("profile-wall")}
+                    >Wall</li>
+                    <li
+                        className={activeTab === "profile-gallery" ? "active" : ""}
+                        onClick={() => handleTabChange("profile-gallery")}
+                    >Gallery</li>
+                    <li
+                        className={activeTab === "profile-video" ? "active" : ""}
+                        onClick={() => handleTabChange("profile-video")}
+                    >Video</li>
+                    <li
+                        className={activeTab === "profile-music" ? "active" : ""}
+                        onClick={() => handleTabChange("profile-music")}
+                    >Music</li>
                 </ul>
                 <div id='profil-post-section'>
-                    <div id='profile-wall'>
-                        <ProfileTitle>My wall</ProfileTitle>
-                        <div id='profile-wall-render'>
-                            {postLists.map((post) =>{
-                                return <div className='profile-wall-post'>{post.postText}</div>
-                            })}
-                        </div>
-                        <div id='profile-wall-sender'>
-                            <input 
-                                placeholder='Ecrivez un message'
-                                type='text'
-                                onChange={(event) => {
-                                    setPostText(event.target.value);
-                                }}
-                            />
-                            <label className='custom-wall-file-upload'>
-                                📁
-                                <input 
-                                type='file'
-                                />
-                            </label>
-                            <label className='custom-wall-file-sender'>
-                                <button onClick={createPost}>🏹</button>
-                            </label>
-                        </div>
-                    </div>
-                    <div id='profile-gallery'>
-                        <ProfileTitle>Gallery</ProfileTitle>
-                        <div className="file-uploader">
-                            <label className='custom-file-upload'>
-                                Sélectionnez une image <br/>📁
-                                <input 
-                                type='file' 
-                                onChange={(event) => {
-                                    // Charge l'image sélectionnée par l'utilisateur
-                                    setImageUpload(event.target.files[0])
-                                }}
-                                />
-                            </label>
-                            <button onClick={uploadImage} className='add-file'>Ajouter une image</button>
-                        </div>
-                        
+                    {(activeTab === "all" || activeTab === "profile-wall") && (
 
-                        <div className='profile-file-flex'>
-                            {imageList.map((url) =>{
-                                return <img src={url}/>
-                            })}
-                        </div>
-                    </div>
-                    <div id='profile-video'>
-                        <ProfileTitle>Video</ProfileTitle>
-                        <div className="file-uploader">
-                            <label className='custom-file-upload'>
-                                Sélectionnez une vidéo <br/>📁
+                        <div id='profile-wall'>
+                        
+                            <ProfileTitle>My wall</ProfileTitle>
+                            <div id='profile-wall-render'>
+                                {postLists.map((post) =>{
+                                    return <div className='profile-wall-post'>
+                                                {post.postText}
+                                            </div>
+                                })}
+                            </div>
+                            <div id='profile-wall-sender'>
                                 <input 
+                                    placeholder='Ecrivez un message'
+                                    type='text'
+                                    onChange={(event) => {
+                                        setPostText(event.target.value);
+                                    }}
+                                />
+                                <label className='custom-wall-file-upload'>
+                                    📁
+                                    <input 
+                                    type='file'
+                                    />
+                                </label>
+                                <label className='custom-wall-file-sender'>
+                                    <button onClick={
+                                        createPost
+                                    }>🏹</button>
+                                </label>
+                            </div>
+                        </div>
+
+                    )}
+
+                    {(activeTab === "all" || activeTab === "profile-gallery") && (
+                        <div id='profile-gallery'>
+                            <ProfileTitle>Gallery</ProfileTitle>
+                            <div className="file-uploader">
+                                <label className='custom-file-upload'>
+                                    Sélectionnez une image <br/>📁
+                                    <input 
                                     type='file' 
                                     onChange={(event) => {
                                         // Charge l'image sélectionnée par l'utilisateur
-                                        setVideoUpload(event.target.files[0])
+                                        setImageUpload(event.target.files[0])
                                     }}
-                                />
-                            </label>
+                                    />
+                                </label>
+                                <button onClick={uploadImage} className='add-file'>Ajouter une image</button>
+                            </div>
                             
-                            <button onClick={uploadVideo} className='add-file'>Ajouter une vidéo</button>
-                        </div>
-                        <div className='profile-file-flex'>
-                            {videoList.map((url) =>{
-                                return <video 
-                                            src={url} 
-                                            onMouseOver={event => event.target.play()}
-                                            onMouseOut={event => event.target.pause()}
-                                            loop>
-                                        </video>
-                            })}
-                        </div>
-                    </div>
-                    <div id='profile-music'>
-                        <ProfileTitle>Music</ProfileTitle>
-                        <div id='profile-music-flex'>
-                            <div id='profile-music-first'>
-                                <div id='profile-music-first-image' className='profile-music-image'>
-                                    <img/>
-                                </div>
-                                <div>
-                                    <p></p>
-                                    <div></div>
-                                </div>
-                            </div>
-                            <div id='profile-music-second' className='profile-music-image'>
-                                <div></div>
-                                <div>
-                                    <p></p>
-                                    <div></div>
-                                </div>
+
+                            <div className='profile-file-flex'>
+                                {imageList.map((url) =>{
+                                    return <img src={url}/>
+                                })}
                             </div>
                         </div>
-                    </div>
+                    )}
+                    {(activeTab === "all" || activeTab === "profile-video") && (
+                        <div id='profile-video'>
+                            <ProfileTitle>Video</ProfileTitle>
+                            <div className="file-uploader">
+                                <label className='custom-file-upload'>
+                                    Sélectionnez une vidéo <br/>📁
+                                    <input 
+                                        type='file' 
+                                        onChange={(event) => {
+                                            // Charge l'image sélectionnée par l'utilisateur
+                                            setVideoUpload(event.target.files[0])
+                                        }}
+                                    />
+                                </label>
+                                
+                                <button onClick={uploadVideo} className='add-file'>Ajouter une vidéo</button>
+                            </div>
+                            <div className='profile-file-flex'>
+                                {videoList.map((url) =>{
+                                    return <video 
+                                                src={url} 
+                                                onMouseOver={event => event.target.play()}
+                                                onMouseOut={event => event.target.pause()}
+                                                loop>
+                                            </video>
+                                })}
+                            </div>
+                        </div>
+                    )}
+
+                    {(activeTab === "all" || activeTab === "profile-music") && (
+                        <div id='profile-music'>
+                            <ProfileTitle>Music</ProfileTitle>
+                            <div id='profile-music-flex'>
+                                <div id='profile-music-first'>
+                                    <div id='profile-music-first-image' className='profile-music-image'>
+                                        <img/>
+                                    </div>
+                                    <div>
+                                        <p></p>
+                                        <div></div>
+                                    </div>
+                                </div>
+                                <div id='profile-music-second' className='profile-music-image'>
+                                    <div></div>
+                                    <div>
+                                        <p></p>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
                 
             </div>

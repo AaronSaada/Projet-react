@@ -207,10 +207,10 @@ h2, h3{
     max-width: 90%;
     margin: 0 auto;
     font-family: 'inter', sans-serif;
+    display: inline;
     font-size: 2rem;
     font-weight: 600;
     color: white;
-
 }
 
 .section-informations{
@@ -260,7 +260,7 @@ h2, h3{
     margin-bottom: -10px;
 }
 
-.form-container{
+.form-container {
     padding: 50px 0 100px 0;
     background-color: rgb(129, 59, 161);
 }
@@ -272,12 +272,13 @@ h2, h3{
     font-size: 1.8rem;
 }
 
-.form{
+.form-container .form {
     background-color: var(--couleur-tertiaire);
-    max-width: 80%;
+    max-width: 50%;
     margin: 0 auto;
     padding: 20px 10px;
     border-radius: 25px;
+    width: 50%;
 }
 
 .form label{
@@ -306,6 +307,23 @@ h2, h3{
     border-radius: 10px;    
     border: none;
     box-shadow: inset 2px 4px rgba(88, 88, 88, 0.27);
+}
+
+#newsletter-form{
+    width: 100%;
+    max-width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.error-message{
+    color: red;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 0.3rem;
 }
 
 .submit-button{
@@ -349,6 +367,10 @@ footer{
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
+}
+
+#newsletter-form{
+    background-color: none;
 }
 
 .newsletter h3{
@@ -400,10 +422,18 @@ footer{
 
 .connection-section-container, .sign-up-section-container{
     background-color: var(--couleur-secondaire);
-    padding: 0 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+
+.connection-section-container form, .sign-up-section-container form{
+    background-color: var(--couleur-tertiaire);
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 0 5%;
 }
 
 .connection-section-container h2, .sign-up-section-container h2{
@@ -547,6 +577,16 @@ input[type='radio']{
     box-shadow: 0 2px 4px black;
 }
 
+#profile-image {
+    display: flex;
+}
+
+#profile-image img{
+    margin: 0 auto;
+    width: 30%;
+    border-radius: 50%;
+}
+
 #profile-lastname{
     font-size: 2.5rem;
 }
@@ -567,6 +607,7 @@ input[type='radio']{
 
 #profile-section-nav li{
     padding: 10px 0;
+    cursor: pointer;
 }
 
 #profile-wall-render{
@@ -626,7 +667,7 @@ input[type='radio']{
 }
 
 .profile-file-flex img, .profile-file-flex video{
-    width: 45%;
+    width: 300px;
     height: 300px;
 }
 
@@ -825,21 +866,28 @@ iframe{
 
     .contact-background{
         display: block;
-    }
-
-    .contact-background img{
         width: 50vw;
-        height: 100%;
     }
 
     #contact-container{
         display: flex;
         width: 100vw;
+        height: 80vh;
+    }
+
+    #contact-container img {
+        width: 100%;
         height: 100%;
     }
 
+    #contact-container > div{
+        width: 50vw
+    }
+
     .form-container{
-        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .newsletter button{
@@ -887,6 +935,13 @@ iframe{
 
     #connection-flex-desktop{
         display: flex;
+    }
+
+    .connection-section-container form, .sign-up-section-container form{
+        background-color: var(--couleur-tertiaire);
+        width: 40%;
+        margin: 0 auto;
+        border-radius: 20px;
     }
 
     #sign-up-flex-desktop{
@@ -988,6 +1043,10 @@ iframe{
         width: 100%;
         
     }
+
+    #profil-post-section > div{
+        margin-bottom: 50px;
+    }
     
     #profile-informations{
         flex-direction: row;
@@ -1016,10 +1075,15 @@ iframe{
         border: 3px solid var(--couleur-tertiaire);
         width: 100%;
         text-align: center;
+        cursor: pointer;
     }
 
     #profil-post-section{
         width: 70%;
+    }
+
+    #profile-wall-render{
+        height: 600px;
     }
 
     #profile-gallery-flex img{

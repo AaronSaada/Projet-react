@@ -5,12 +5,12 @@ import { getStorage } from "firebase/storage"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAocDxz6xHZCv-rjV1Gw6eOJuA1dLCHrFY",
-  authDomain: "react-auth-rrv6-e1bd9.firebaseapp.com",
-  projectId: "react-auth-rrv6-e1bd9",
-  storageBucket: "react-auth-rrv6-e1bd9.appspot.com",
-  messagingSenderId: "579830180390",
-  appId: "1:579830180390:web:69a844675b0a95857b54e7"
+  apiKey: "AIzaSyDRTrPajDezbaLbtqUsp5N6Yh7RD12P-Zo",
+  authDomain: "connectify-39ffb.firebaseapp.com",
+  projectId: "connectify-39ffb",
+  storageBucket: "connectify-39ffb.appspot.com",
+  messagingSenderId: "1029805952824",
+  appId: "1:1029805952824:web:abad6b4d560a777cd3bbcd"
 };
 
 const app = initializeApp(firebaseConfig);
