@@ -11,12 +11,43 @@ export default function MainProfil(){
 
     // Créer une fonction setImageUpload et une constante imageUpload
     const [imageUpload, setImageUpload] = useState(null);
-
     // Créer une fonction setImageList (Cette fonction comporte un tableau) et une constante imageList
     const [imageList, setImageList] = useState([]);
-
     // Récupère toutes les images uploadées dans le dossier images dans le storage de Firebase
     const imageListRef = ref(storage, "images/")
+
+    // Créer une fonction setImageUpload et une constante imageUpload
+    const [videoUpload, setVideoUpload] = useState(null);
+    // Créer une fonction setImageList (Cette fonction comporte un tableau) et une constante imageList
+    const [videoList, setVideoList] = useState([]);
+    // Récupère toutes les images uploadées dans le dossier images dans le storage de Firebase
+    const videoListRef = ref(storage, "images/")
+
+    // Constante permettant l'upload d'images
+    const uploadVideo = () => {
+
+        // Si aucune image n'a été sélectionnée, on ne fait rien
+        if(videoUpload == null) return;
+
+        //Créer un dossier images dans lequel les images seront uploadées.
+        // Lors de l'upload, on changera le nom du fichier par son nom original suivi d'une chaîne de caractère aléatoire puis '.png' 
+        const videoRef = ref(storage, `videos/${videoUpload.name + v4() + '.mp4'}`);
+
+        // Donne la référence où doit être uploadée le fichier puis l'image à uploadée.
+        uploadBytes(videoRef, videoUpload).then((snapshot) => {
+
+            // Une fois la fonction ci-dessus complétée
+            // Récupère l'URL du nouvel élément uploadé et permet de l'afficher sans avoir à recharger la page.
+            getDownloadURL(snapshot.ref).then((url) => {
+
+                // On ajoute chaque image via son URL à la liste.
+                setVideoList((prev) => [...prev, url])
+
+            })
+
+        });
+    }
+
 
     // Constante permettant l'upload d'images
     const uploadImage = () => {
@@ -57,7 +88,33 @@ export default function MainProfil(){
                 })
             })
         })
+
+        listAll(videoListRef).then((response) => {
+            // Après avoir complété la requête ci-dessus.
+            // On passe sur chaque éléments.
+            response.items.forEach((item) => {
+                // On récupère chaque URL de chaque image uploadée.
+                getDownloadURL(item).then((url) => {
+                    // On ajoute chaque image via son URL à la liste.
+                    setVideoList((prev) => [...prev, url])
+                })
+            })
+        })
     }, [])
+
+    // Partie My Wall
+    const [enteredText, setEnteredText] = useState("");
+    const [submittedText, setSubmittedText] = useState(null);
+    const textChangeHandler = (i) => {
+        setEnteredText(i.target.value);
+        //console.log(i.target.value);
+    };
+
+    const submitHandler = (event) => {
+        event.preventDefault();
+        setSubmittedText(enteredText);
+        setEnteredText("");
+    };
 
 
     return(
@@ -83,37 +140,55 @@ export default function MainProfil(){
                 <div id='profil-post-section'>
                     <div id='profile-wall'>
                         <ProfileTitle>My wall</ProfileTitle>
-                        <div id='profile-wall-render'>
-                            <div id='profile-wall-render-message1'>
-                                <p>Le Rap US >>> Rap FR</p>
-                            </div>
-                            <div id='profile-wall-render-message2'>
-                                <img src={Homer}/>
-                                <p>J'aime le classique...</p>
-                            </div>
-                        </div>
+                        
                         <div id='profile-wall-sender'>
-                            <input type='text' placeholder='Ecrivez un message...'/>
-                            <button id='wall-file-upload'>📁</button>
-                            <button id='wall-file-sender'>🏹</button>
+                        {submittedText && (<p>You just typed: {submittedText}</p>)}
+                            <form onSubmit={submitHandler}>
+                                <input 
+                                    placeholder='Ecrivez un message'
+                                    type='text'
+                                    value={enteredText}
+                                    onChange={textChangeHandler}
+                                />
+                                <button type='submit'>
+                                    Submit
+                                </button>
+                            </form>
+                            <label className='custom-wall-file-upload'>
+                                📁
+                                <input 
+                                type='file' 
+                                onChange={(event) => {
+                                    // Charge l'image sélectionnée par l'utilisateur
+                                    setImageUpload(event.target.files[0])
+                                }}
+                                />
+                            </label>
+                            <label className='custom-wall-file-sender'>
+                                🏹
+                                <input type="submit"
+                                />
+                            </label>
                         </div>
                     </div>
                     <div id='profile-gallery'>
                         <ProfileTitle>Gallery</ProfileTitle>
-                        <div id="image-uploader">
-                            <input 
-                            type='file' 
-                            onChange={(event) => {
-                                // Charge l'image sélectionnée par l'utilisateur
-                                setImageUpload(event.target.files[0])
-                            }}
-                            className='browse-image'
-                            />
-                            <button onClick={uploadImage} className='add-image'>Ajouter une image à votre gallerie</button>
+                        <div className="file-uploader">
+                            <label className='custom-file-upload'>
+                                Sélectionnez une image <br/>📁
+                                <input 
+                                type='file' 
+                                onChange={(event) => {
+                                    // Charge l'image sélectionnée par l'utilisateur
+                                    setImageUpload(event.target.files[0])
+                                }}
+                                />
+                            </label>
+                            <button onClick={uploadImage} className='add-file'>Ajouter une image</button>
                         </div>
                         
 
-                        <div id='profile-gallery-flex'>
+                        <div className='profile-file-flex'>
                             {imageList.map((url) =>{
                                 return <img src={url}/>
                             })}
@@ -121,8 +196,29 @@ export default function MainProfil(){
                     </div>
                     <div id='profile-video'>
                         <ProfileTitle>Video</ProfileTitle>
-                        <div id='profile-video-item'>   
-                            <iframe src="https://www.youtube.com/embed/K_EVuLegRZ0" title="The only tags you need when first learning HTML" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <div className="file-uploader">
+                            <label className='custom-file-upload'>
+                                Sélectionnez une vidéo <br/>📁
+                                <input 
+                                    type='file' 
+                                    onChange={(event) => {
+                                        // Charge l'image sélectionnée par l'utilisateur
+                                        setVideoUpload(event.target.files[0])
+                                    }}
+                                />
+                            </label>
+                            
+                            <button onClick={uploadVideo} className='add-file'>Ajouter une vidéo</button>
+                        </div>
+                        <div className='profile-file-flex'>
+                            {videoList.map((url) =>{
+                                return <video 
+                                            src={url} 
+                                            onMouseOver={event => event.target.play()}
+                                            onMouseOut={event => event.target.pause()}
+                                            loop>
+                                        </video>
+                            })}
                         </div>
                     </div>
                     <div id='profile-music'>

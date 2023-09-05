@@ -34,8 +34,9 @@ h1{
 
 h2, h3{
     font-family: 'gravitas one', cursive;
+    font-family: 'chicle', cursive;
+    font-family: 'inter', cursive;
 }
-
 
 /*  ----------------------  MENU BURGER  -----------------------  */
 
@@ -596,16 +597,6 @@ input[type='radio']{
     box-shadow: 1px 2px rgb(107, 107, 107) ;
 }
 
-#wall-file-upload, #wall-file-sender{
-    height: 2.7rem;
-    width: 2.7rem;
-    border: none;
-    border-radius: 50%;
-}
-
-#wall-file-upload{
-    background: var(--couleur-principale);
-}
 
 #wall-file-sender{
     background: var(--couleur-tertiaire);
@@ -644,7 +635,7 @@ input[type='radio']{
     width: 100%;
 }
 
-#profile-gallery-flex{
+.profile-file-flex{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -652,33 +643,65 @@ input[type='radio']{
     padding-top: 2rem;
 }
 
-#profile-gallery-flex img {
+.profile-file-flex img, .profile-file-flex video{
     width: 45%;
     height: 300px;
 }
 
-#image-uploader{
+.file-uploader{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.browse-image{
-    margin: 1rem;
-    background-color: var(--couleur-secondaire);
-    color: var(--couleur-principale);
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 10px 20px;
-}
-
-.add-image{
+.add-file{
     background-color: var(--couleur-principale);
     color: var(--couleur-secondaire);
     font-size: 1.5rem;
     border: none;
     padding: 10px 20px;
     font-weight: 700;
+    cursor: pointer;
+}
+
+.custom-file-upload input, .custom-wall-file-upload input, .custom-wall-file-sender input{
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    margin: 1rem;
+    background-color: var(--couleur-secondaire);
+    color: var(--couleur-principale);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 20px;
+    
+}
+
+.custom-wall-file-upload{
+    display: inline-block;
+    cursor: pointer;
+    background: var(--couleur-tertiaire);
+    color: var(--couleur-principale);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.custom-wall-file-sender{
+    display: inline-block;
+    cursor: pointer;
+    background: var(--couleur-principale);
+    color: var(--couleur-principale);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 50%;
 }
 
 #profile-video-item{
