@@ -573,11 +573,12 @@ input[type='radio']{
     background-color: rgba(97, 3, 95, 0.299);
     display: flex;
     flex-direction: column;
-    align-items: center;
-}
-
-#profile-wall-render div{
+    align-items: end;
+    height: 300px;
     max-width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+    overflow-y: scroll;
 }
 
 #profile-wall-sender{
@@ -586,6 +587,8 @@ input[type='radio']{
     display: flex;
     justify-content: space-around;
     align-items: center;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 #profile-wall-sender input{
@@ -597,39 +600,18 @@ input[type='radio']{
     box-shadow: 1px 2px rgb(107, 107, 107) ;
 }
 
+.profile-wall-post{
+    background-color: white;
+    padding: 20px 30px;
+    max-width: 90%;
+    margin: 10px 0;
+}
+
 
 #wall-file-sender{
     background: var(--couleur-tertiaire);
 }
 
-#profile-wall-render-message1{
-    max-width: 85%;
-    text-align: left;
-    margin: 20px auto 0 auto;
-    width: 100%;
-    padding: 20px;
-    background-color: white;
-    font-size: 1.3rem;
-    border-radius: 7px;
-    box-shadow: 1px 2px rgb(127, 127, 127);
-}
-
-#profile-wall-render-message2{
-    max-width: 85%;
-    width: 100%;
-    text-align: center;
-    margin: 20px auto;
-    padding: 20px;    
-    background-color: white;
-    font-size: 1.3rem;
-    border-radius: 7px;
-    box-shadow: 1px 2px rgb(127, 127, 127);
-}
-
-#profile-wall-render-message2 img{
-    width: 100%;
-
-}
 
 #profile-gallery{
     width: 100%;
@@ -664,7 +646,7 @@ input[type='radio']{
     cursor: pointer;
 }
 
-.custom-file-upload input, .custom-wall-file-upload input, .custom-wall-file-sender input{
+.custom-file-upload input, .custom-wall-file-upload input{
     display: none;
 }
 
@@ -693,7 +675,7 @@ input[type='radio']{
     border-radius: 50%;
 }
 
-.custom-wall-file-sender{
+.custom-wall-file-sender button{
     display: inline-block;
     cursor: pointer;
     background: var(--couleur-principale);

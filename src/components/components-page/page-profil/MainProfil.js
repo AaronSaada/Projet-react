@@ -1,8 +1,8 @@
 import PhotoDeProfil from '../../../images/photo-de-profil.png'
 import ProfileTitle from '../../ProfileTitle.js'
-import Homer from '../../../images/homer 1.png'
 import { useState, useEffect } from 'react'
-import { storage } from '../../../api/firebase-config'
+import { storage, db, auth } from '../../../api/firebase-config'
+import { addDoc, collection, getDocs } from 'firebase/firestore'
 import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage'
 import { v4 } from 'uuid'
 
@@ -22,6 +22,39 @@ export default function MainProfil(){
     const [videoList, setVideoList] = useState([]);
     // Récupère toutes les images uploadées dans le dossier images dans le storage de Firebase
     const videoListRef = ref(storage, "images/")
+
+    // Créer une fonction setPostText permettant de modifier la constante postText
+    const [postText, setPostText] = useState("");
+    // On attribut à la constante postsCollectionRef le chemin vers la collection "messages" dans la db
+    const postsCollectionRef = collection(db, "messages")
+    // Fonction asynchrone permettant de créer un post dans la base de données
+    const createPost = async () => {
+        // On ajoute dans la base de données
+        await addDoc(postsCollectionRef, {
+            // Le message entré par l'utilisateur
+            postText, 
+            author: {
+                // Le nom du posteur
+                name: auth.currentUser.displayName, 
+                // L'id du posteur
+                id: auth.currentUser.uid 
+            }
+        });
+    };
+
+
+    const [postLists, setPostsList] = useState([]);
+    
+    useEffect (() => {
+        const getPosts = async () => {
+            const data = await getDocs(postsCollectionRef)
+            setPostsList(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+        };
+
+        getPosts();
+    })
+
+
 
     // Constante permettant l'upload d'images
     const uploadVideo = () => {
@@ -102,20 +135,7 @@ export default function MainProfil(){
         })
     }, [])
 
-    // Partie My Wall
-    const [enteredText, setEnteredText] = useState("");
-    const [submittedText, setSubmittedText] = useState(null);
-    const textChangeHandler = (i) => {
-        setEnteredText(i.target.value);
-        //console.log(i.target.value);
-    };
-
-    const submitHandler = (event) => {
-        event.preventDefault();
-        setSubmittedText(enteredText);
-        setEnteredText("");
-    };
-
+    // Partie Wall
 
     return(
         <div id='main-profile'>
@@ -140,34 +160,27 @@ export default function MainProfil(){
                 <div id='profil-post-section'>
                     <div id='profile-wall'>
                         <ProfileTitle>My wall</ProfileTitle>
-                        
+                        <div id='profile-wall-render'>
+                            {postLists.map((post) =>{
+                                return <div className='profile-wall-post'>{post.postText}</div>
+                            })}
+                        </div>
                         <div id='profile-wall-sender'>
-                        {submittedText && (<p>You just typed: {submittedText}</p>)}
-                            <form onSubmit={submitHandler}>
-                                <input 
-                                    placeholder='Ecrivez un message'
-                                    type='text'
-                                    value={enteredText}
-                                    onChange={textChangeHandler}
-                                />
-                                <button type='submit'>
-                                    Submit
-                                </button>
-                            </form>
+                            <input 
+                                placeholder='Ecrivez un message'
+                                type='text'
+                                onChange={(event) => {
+                                    setPostText(event.target.value);
+                                }}
+                            />
                             <label className='custom-wall-file-upload'>
                                 📁
                                 <input 
-                                type='file' 
-                                onChange={(event) => {
-                                    // Charge l'image sélectionnée par l'utilisateur
-                                    setImageUpload(event.target.files[0])
-                                }}
+                                type='file'
                                 />
                             </label>
                             <label className='custom-wall-file-sender'>
-                                🏹
-                                <input type="submit"
-                                />
+                                <button onClick={createPost}>🏹</button>
                             </label>
                         </div>
                     </div>
