@@ -648,6 +648,10 @@ input[type='radio']{
     margin: 10px 0;
 }
 
+.post-time-stamp{
+    font-size: 0.5rem;
+    margin-left: 20px;
+}
 
 #wall-file-sender{
     background: var(--couleur-tertiaire);

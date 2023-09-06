@@ -1,11 +1,11 @@
 import PhotoDeProfil from '../../../images/blank-profile-picture-973460_960_720.webp'
 import ProfileTitle from '../../ProfileTitle.js'
+import Date from '../../general/Date'
 import { useState, useEffect } from 'react'
-import { storage, db, auth } from '../../../api/firebase-config'
+import { storage, db } from '../../../api/firebase-config'
 import { addDoc, collection, getDocs } from 'firebase/firestore'
 import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage'
 import { v4 } from 'uuid'
-
 
 export default function MainProfil(){
 
@@ -32,13 +32,7 @@ export default function MainProfil(){
         // On ajoute dans la base de données
         await addDoc(postsCollectionRef, {
             // Le message entré par l'utilisateur
-            postText, 
-            author: {
-                // Le nom du posteur
-                name: auth.currentUser.displayName, 
-                // L'id du posteur
-                id: auth.currentUser.uid 
-            }
+            postText
         });
     };
 
@@ -141,6 +135,7 @@ export default function MainProfil(){
         setActiveTab(tab);
     };
 
+
     return(
         <div id='main-profile'>
             <div id='profile-informations-container'>
@@ -186,6 +181,7 @@ export default function MainProfil(){
                                 {postLists.map((post) =>{
                                     return <div className='profile-wall-post'>
                                                 {post.postText}
+                                                <Date/>
                                             </div>
                                 })}
                             </div>
@@ -253,7 +249,9 @@ export default function MainProfil(){
                                     />
                                 </label>
                                 
-                                <button onClick={uploadVideo} className='add-file'>Ajouter une vidéo</button>
+                                <button onClick={
+                                    uploadVideo
+                                } className='add-file'>Ajouter une vidéo</button>
                             </div>
                             <div className='profile-file-flex'>
                                 {videoList.map((url) =>{

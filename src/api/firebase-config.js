@@ -5,12 +5,12 @@ import { getStorage } from "firebase/storage"
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDRTrPajDezbaLbtqUsp5N6Yh7RD12P-Zo",
-  authDomain: "connectify-39ffb.firebaseapp.com",
-  projectId: "connectify-39ffb",
-  storageBucket: "connectify-39ffb.appspot.com",
-  messagingSenderId: "1029805952824",
-  appId: "1:1029805952824:web:abad6b4d560a777cd3bbcd"
+  apiKey: "AIzaSyDG2Vy30zpR7xUBSzEfRy3mnMvfD0mMR0k",
+  authDomain: "connectify-2.firebaseapp.com",
+  projectId: "connectify-2",
+  storageBucket: "connectify-2.appspot.com",
+  messagingSenderId: "493242804955",
+  appId: "1:493242804955:web:ad3d83ef430fd98139fafe"
 };
 
 const app = initializeApp(firebaseConfig);
